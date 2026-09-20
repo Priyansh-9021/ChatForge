@@ -1,0 +1,14 @@
+langgraph
+langchain_groq
+langchain_google_genai
+dotenv
+langchain_core
+pydantic
+streamlit
+langgraph-checkpoint-sqlite==3.1.0
+langchain-tavily
+tavily-python
+langchain-community
+faiss-cpu
+pypdf
+langchain-text-splitters
