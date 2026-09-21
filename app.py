@@ -1,5 +1,5 @@
 import os
-from agentic_chatbot_hitl_backend import chatbot,get_all_threads,ingest_rag_document
+from backend import chatbot,get_all_threads,ingest_rag_document
 from langchain_core.messages import AIMessage, HumanMessage, ToolMessage, AIMessage
 import streamlit as st
 import uuid
