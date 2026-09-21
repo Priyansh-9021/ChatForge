@@ -169,6 +169,58 @@ Open [http://localhost:8501](http://localhost:8501) in your browser and start fo
 
 ---
 
+## 🐳 Docker
+
+Prefer containers? ChatForge ships with a production-ready `Dockerfile`.
+
+### Build the Image
+
+```bash
+docker build -t chatforge .
+```
+
+### Run the Container
+
+```bash
+docker run -p 8501:8501 \
+  --env-file .env \
+  -v chatforge_db:/app/chatbot.db \
+  -v chatforge_faiss:/app/faiss.db \
+  chatforge
+```
+
+> **Note:** Pass your API keys via `--env-file .env`. Never bake secrets into the image.
+> Volumes keep your chat history and vector store persistent across container restarts.
+
+### Or with Docker Compose
+
+```yaml
+# docker-compose.yml
+services:
+  chatforge:
+    build: .
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - chatforge_db:/app/chatbot.db
+      - chatforge_faiss:/app/faiss.db
+    restart: unless-stopped
+
+volumes:
+  chatforge_db:
+  chatforge_faiss:
+```
+
+```bash
+docker compose up --build
+```
+
+Open [http://localhost:8501](http://localhost:8501) 🎉
+
+---
+
 ## 💬 Example Conversations
 
 ```
